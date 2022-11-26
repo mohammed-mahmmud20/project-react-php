@@ -39,6 +39,21 @@ const Signup = () => {
             formData.append('email', data.email)
             formData.append('password', data.password)
           }}
+          axios {{
+            method:'post',
+            url: 'localhost/php/login.php',
+            data: formData,
+            config: { header: {'Content-Type': 'multipart/form-data' }}
+          }};
+          .then(function (response) {
+            // handle success
+            console.log(response)
+            alert ('New User Successfully Added.');
+          })
+          .catch(function (response) {
+            // handle error
+            console.log(response)
+          })
           {fotmik => (
             <div>
               <h1 className="my-4 font-weight-bold .display-4">Sign Up</h1>
@@ -52,10 +67,8 @@ const Signup = () => {
                 <button className="btn btn-primary mt-3 ml-3" type="reset">Reset</button>
               </Form>
             </div>
-
           )}
     </Formik>
-
   )
 }
 
